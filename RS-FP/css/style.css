@@ -1,0 +1,127 @@
+html{
+    scroll-behavior: smooth;
+}
+body {
+    background-color: #dedede;
+    padding: 5px;
+    margin: 15px;
+    font-size: 25px;
+    font-family:Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family:Arial, sans-serif;
+    font-size: 1.95em;
+}
+
+h2{
+    text-align:center;
+  }
+
+li{
+    margin-top: 20px;
+}
+
+/* Grid for figures */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr; /* one column mobile */
+  gap: 10px; /* 10px row/column gap */
+}
+
+figure {
+    width: 80vw;  /* fixed width */
+    height: 50vh;
+    border: 5px solid blue; 
+    margin: auto;
+    padding: 0;
+    text-align: center;
+    background-color: white;
+    border-radius: 35px;
+}
+
+
+img{
+    border-radius: 35px 35px 0 0;
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+  }
+
+.label{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* =======================
+   Tablet View (≥ 772px)
+   ======================= */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+      figure {
+        width: 30vw;  /* fixed width */
+        height: 40vh; /* fixed height for perfect circle */
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: auto; /* centers in grid cell */
+      }
+
+      figure img {
+        width: 100%;
+        height: 85%;
+        object-fit: cover; /* keeps proportion but fills circle */
+        border-radius: 0; /* let figure shape control clipping */
+      }
+
+  figure:last-child {
+      width: 75vw;
+    grid-column: span 2; /* last spans both columns */
+  }
+}
+
+/* =======================
+   Large Screen View (≥ 992px)
+   ======================= */
+@media (min-width: 992px) {
+  figure:nth-child(3n) {
+    width: 88vw;
+    grid-column: span 2; /* every 3rd spans both columns */
+  }
+
+    img{
+        border-radius: 0;
+        width: 100%;
+      }
+    
+  figure {
+      width: 40vw;
+    border-radius: 0; /* remove circles */
+  }
+}
+
+/* =======================
+   Reduced Motion
+   ======================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* =======================
+   Dark Mode
+   ======================= */
+@media (prefers-color-scheme: dark) {
+  figure {
+    background-color: #222;
+    color: #ffeb3b;
+    border-color: #000;
+  }
+}
